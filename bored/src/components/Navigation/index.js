@@ -7,11 +7,10 @@ export default function Navigation() {
     <Navbar bg="#A3320B" expand="lg" className="justify-content-center">
       <Navbar.Brand
         style={{
-          fontFamily: "'Comforter', cursive",
+          fontFamily: "'Bungee Shade'",
           fontWeight: "bolder",
-          fontSize: "40px",
+          fontSize: "150px",
           color: "#e5383b",
-          textDecoration: "none",
         }}
         as={NavLink}
         to="/"
