@@ -1,4 +1,4 @@
 export const selectActivity = (state) => {
-  console.log("hi");
-  return state.activities;
+  console.log("this is state activities: ", state);
+  return state;
 };
