@@ -11,7 +11,7 @@ import { fetchRandom } from "../../store/activities/actions";
 export default function Homepage() {
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("Hi there this is useEffect, imma dispatch fetchrandom");
+    console.log("Homepage fetching first activity"); //runs first.
     dispatch(fetchRandom());
   }, []);
 

@@ -38,6 +38,12 @@ export default function Activitypage() {
   function buttonClick() {
     console.log("Hi, I'm clicked");
     getNewRandomBackgroundColor();
+    console.log("activity page: fetching a new activity");
+    dispatch(fetchRandom()); //fetches a new activity
+    setActivity(newActivity); //checks selector for new activity, but is quicker than the fetch request of the dispatch action
+    //we need to find a way to make the setActivity wait for the store to be updated.
+    //An idea to work around the slowness: a countdown intermezzo in between the rendering?
+    console.log("this is the new activity: ", newActivity);
   }
 
   useEffect(() => {
@@ -45,7 +51,7 @@ export default function Activitypage() {
     setActivity(newActivity);
   }, []);
 
-  console.log("activity is ", activity);
+  console.log("activity is ", activity); //runs twice on first render of page. First empty, then updated.
   return (
     <Container id="ActivityPage" style={activitypageStyle}>
       <Row>

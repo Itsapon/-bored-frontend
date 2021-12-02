@@ -15,9 +15,11 @@ export default function ActivityCard(props) {
       {!activityFull ? (
         <div>Loading an activity...</div>
       ) : (
-        <Container style={cardStyle}>
-          <p>{activityFull.activity}</p>
-        </Container>
+        <div>
+          <Container style={cardStyle}>
+            <p>{activityFull.activity}</p>
+          </Container>
+        </div>
       )}
     </div>
   );

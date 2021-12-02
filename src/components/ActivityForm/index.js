@@ -18,10 +18,8 @@ export default function ActivityForm(props) {
   };
 
   return (
-
-      <Container id="ActivityForm">
+    <Container id="ActivityForm">
       <Button style={buttonStyle} onClick={() => buttonClick()}>
-
         No! Give me something else ...
       </Button>
       <Form>
