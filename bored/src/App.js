@@ -1,4 +1,6 @@
+//import tools
 import "./App.css";
+//import components and pages
 import ActivityCard from "./components/ActivityCard";
 import ActivityForm from "./components/ActivityForm";
 
