@@ -6,8 +6,6 @@ import { Container, Row, Col } from "react-bootstrap";
 //components, actions etc
 import ActivityCard from "../../components/ActivityCard";
 import ActivityForm from "../../components/ActivityForm";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { fetchRandom } from "../../store/activities/actions";
 import { selectActivity } from "../../store/activities/selectors";
 
@@ -26,9 +24,14 @@ const questionStyle = {
 };
 
 function getNewRandomBackgroundColor() {
-  var myArray = ["#B8B8D1", "#5B5F97", "#FFC145", "#FF6B6C"]; // 'B8B8D1'
-  var rand = myArray[Math.floor(Math.random() * myArray.length)];
-  document.getElementById("App").style.backgroundColor = rand;
+  var colorArray = [
+    { backgroundcolor: "#5B5F97", fontcolor: "#FFFFFB" }, // good combo
+    { backgroundcolor: "#FFC145", fontcolor: "#373D20" }, // good combo, also with logo
+    { backgroundcolor: "#FF6B6C", fontcolor: "#FFFFFB" },
+  ];
+  var colorSheme = colorArray[Math.floor(Math.random() * colorArray.length)];
+  document.getElementById("App").style.backgroundColor = colorSheme.backgroundcolor;
+  document.getElementById("App").style.color = colorSheme.fontcolor;
 }
 
 function buttonClick() {
