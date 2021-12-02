@@ -4,13 +4,12 @@ import { NavLink } from "react-router-dom";
 
 export default function Navigation() {
   return (
-    <Navbar bg="#A3320B" expand="lg" className="justify-content-center">
-      <Navbar.Brand
+    <Navbar expand="lg" className="justify-content-center">
+      <Navbar.Brand id="Logo"
         style={{
           fontFamily: "'Bungee Shade'",
           fontWeight: "bolder",
           fontSize: "150px",
-          color: "#e5383b",
         }}
         as={NavLink}
         to="/"
