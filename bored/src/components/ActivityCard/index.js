@@ -12,3 +12,6 @@ export default function ActivityCard() {
     </Container>
   );
 }
+/*
+filter all people > 6 && type == relax
+*/

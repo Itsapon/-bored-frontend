@@ -1,10 +1,16 @@
+//tool imports
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ActivityCard from "../../components/ActivityCard";
 import ActivityForm from "../../components/ActivityForm";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchRandom } from "../../store/activities/actions";
 
-const activitypageStyle = {
+export default function Activitypage() {
+  const dispatch = useDispatch();
+  
+  const activitypageStyle = {
   width: "90%",
   fontFamily: "Grandstander",
   fontSize: "25px",
@@ -24,11 +30,12 @@ function buttonClick() {
   console.log("Hi, I'm clicked");
   getNewRandomBackgroundColor();
 }
-
-export default function Activitypage() {
+  
   useEffect(() => {
     getNewRandomBackgroundColor();
-  }, []);
+    console.log("Hi there this is useEffect, imma dispatch fetchrandom");
+    dispatch(fetchRandom);
+  }, [dispatch]);
 
   return (
     <Container id="ActivityPage" style={activitypageStyle}>
