@@ -12,7 +12,9 @@ export default function ActivityForm() {
           borderRadius: "30px",
           margin: "20px",
         }}
-        onClick={() => console.log("Hi, I'm clicked")}
+        onClick={() =>
+          console.log("Hi, I'm clicked. Add onClick re-render or sth like that")
+        }
       >
         No! Give me something else ...
       </Button>

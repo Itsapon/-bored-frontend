@@ -24,7 +24,7 @@ export default function Activitypage() {
   return (
     <div>
       <h1>Wanna do this?</h1>
-      <ActivityCard />
+      <ActivityCard activity={activity} />
       <ActivityForm />
     </div>
   );
