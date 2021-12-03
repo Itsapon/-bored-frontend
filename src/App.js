@@ -11,6 +11,7 @@ import "./App.css";
 import Navigation from "./components/Navigation";
 import Homepage from "./pages/Homepage/Homepage";
 import Activitypage from "./pages/Activitypage";
+import Weather from "./components/Weather";
 
 function App() {
   return (
