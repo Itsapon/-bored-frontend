@@ -3,8 +3,9 @@ import { Container } from "react-bootstrap";
 
 export default function ActivityCard() {
   const cardStyle = {
-    border: "solid 10px green",
-    borderRadius: "50px",
+    padding: "25px",
+    border: "solid 2px darkblue",
+    borderRadius: "40px",
   };
   return (
     <Container style={cardStyle}>
