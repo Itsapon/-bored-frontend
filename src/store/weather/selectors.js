@@ -1,1 +1,1 @@
-export const selectForecast = (reduxState) => reduxState.weather;
+export const selectForecast = (reduxState) => reduxState.weather.weather;
