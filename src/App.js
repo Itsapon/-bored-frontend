@@ -15,7 +15,7 @@ import Weather from "./components/Weather";
 
 function App() {
   return (
-    <div className="App" id="App" style={{ height: "100vh" }}>
+    <div className="App" id="App" style={{ minHeight: "100vh" }}>
       <BrowserRouter>
         <Navigation />
         <Routes>
