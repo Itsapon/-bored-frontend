@@ -8,6 +8,7 @@ import ActivityCard from "../../components/ActivityCard";
 import ActivityForm from "../../components/ActivityForm";
 import { fetchRandom } from "../../store/activities/actions";
 import { selectActivity } from "../../store/activities/selectors";
+import Weather from "../../components/Weather";
 
 export default function Activitypage() {
   const dispatch = useDispatch();
@@ -52,7 +53,9 @@ function getNewRandomBackgroundColor() {
 
   console.log("activity is ", activity); //runs twice on first render of page. First empty, then updated.
   return (
+
     <Container id="ActivityPage" style={activitypageStyle}>
+      <Weather />
       <Row>
         <h1 style={questionStyle}>Wanna do this?</h1>
       </Row>
