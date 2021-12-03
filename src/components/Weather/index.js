@@ -9,7 +9,7 @@ export default function Weather() {
   const dispatch = useDispatch();
   const weatherForecast = useSelector(selectForecast);
 
-  console.log("weatherForecast in component is:", weatherForecast);
+  // console.log("weatherForecast in component is:", weatherForecast);
 
   const [city, setCity] = useState("");
 
@@ -51,7 +51,7 @@ export default function Weather() {
 
   function submitForm(event) {
     event.preventDefault();
-    console.log("type city", typeof city);
+    // console.log("type city", typeof city);
 
     dispatch(fetchWeatherForecast(city));
   }
