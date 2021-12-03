@@ -3,8 +3,9 @@ import { Container } from "react-bootstrap";
 
 export default function ActivityCard(props) {
   const cardStyle = {
-    border: "solid 10px green",
-    borderRadius: "50px",
+    padding: "25px",
+    border: "solid 2px darkblue",
+    borderRadius: "40px",
   };
   const activityFull = props.activity; // here we can find every info on the one activity we display.
 

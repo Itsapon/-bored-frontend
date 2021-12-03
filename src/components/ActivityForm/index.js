@@ -3,6 +3,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { Row, Col } from "react-bootstrap";
+import "./index.css";
 
 export default function ActivityForm(props) {
   const { buttonClick } = props;
@@ -12,16 +13,19 @@ export default function ActivityForm(props) {
     height: "60px",
     fontWeight: "bolder",
     fontSize: "25px",
-    // boxShadow: " 5px 3px 5px lightblue , 3px 3px 3px grey",
+    boxShadow: " 4px 3px darkblue , 3px 3px",
     borderRadius: "5px",
     margin: "20px",
   };
 
   return (
     <Container id="ActivityForm">
-      <Button style={buttonStyle} onClick={() => buttonClick()}>
+      <div class="button">
+        <a onClick={() => buttonClick()}>No! Give me something else ...</a>
+      </div>
+      {/* <button style={buttonStyle} onClick={() => buttonClick()}>
         No! Give me something else ...
-      </Button>
+      </button> */}
       <Form>
         <Row>
           <Col xs="auto">I want to</Col>
