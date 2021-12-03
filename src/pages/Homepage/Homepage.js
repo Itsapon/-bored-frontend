@@ -12,12 +12,6 @@ import { fetchRandom } from "../../store/activities/actions";
 export default function Homepage() {
   const dispatch = useDispatch();
 
-  const homepageStyle = {
-    width: "90%",
-    fontFamily: "Grandstander",
-    fontSize: "25px",
-  };
-
   const questionStyle = {
     fontSize: "50px",
   };
@@ -64,7 +58,7 @@ export default function Homepage() {
   }, []);
 
   return (
-    <Container style={homepageStyle}>
+    <Container style={{ width: "90%" }}>
       <h1 style={questionStyle}>I'm bored</h1>
       <Link
         to={{
@@ -73,6 +67,9 @@ export default function Homepage() {
       >
         <Button style={buttonStyle}>Give me an activity!</Button>
       </Link>
+      <p>
+        <Link to={{ pathname: "/about" }}>About !Bored</Link>
+      </p>
     </Container>
   );
 }
