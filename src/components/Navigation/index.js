@@ -9,7 +9,7 @@ export default function Navigation() {
         style={{
           fontFamily: "'Bungee Shade'",
           fontWeight: "bolder",
-          fontSize: "150px",
+          fontSize: "12vw",
         }}
         as={NavLink}
         to="/"

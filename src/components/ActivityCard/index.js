@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 
 export default function ActivityCard(props) {
   const cardStyle = {
@@ -11,16 +11,28 @@ export default function ActivityCard(props) {
 
   // console.log("what is activityFull ", activityFull);
 
+  const imgUrl =
+    "https://michielbrongers.nl/someimages/" + activityFull.type + ".png";
+
   return (
     <div>
       {!activityFull ? (
         <div>Loading an activity...</div>
       ) : (
-        <div>
+        <Col md={{ span: 8, offset: 2 }}>
           <Container style={cardStyle}>
-            <p>{activityFull.activity}</p>
+            <Row class="d-flex justify-content-center">
+              <Col xs={12}>
+                <p>{activityFull.activity}</p>
+              </Col>
+            </Row>
+            <Row class="d-flex justify-content-center">
+              <Col md={{ span: 6, offset: 3 }}>
+                <Image src={imgUrl} alt={activityFull.type} fluid></Image>
+              </Col>
+            </Row>
           </Container>
-        </div>
+        </Col>
       )}
     </div>
   );
