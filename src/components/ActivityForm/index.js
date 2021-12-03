@@ -18,7 +18,7 @@ export default function ActivityForm(props) {
     fontWeight: "bolder",
     fontSize: "25px",
     boxShadow: " 4px 3px darkblue , 3px 3px",
-    borderRadius: "5px",
+    borderRadius: "15px",
     margin: "20px",
   };
   function testClick(){
@@ -29,12 +29,21 @@ export default function ActivityForm(props) {
 
   return (
     <Container id="ActivityForm">
-      <div class="button">
+      {/* <div class="button">
         <a onClick={() => buttonClick()}>No! Give me something else ...</a>
-      </div>
+      </div> */}
       <button onClick={()=>testClick()}>Test click</button>
+
+      <Row class="d-flex justify-content-center">
+        <Col>
+          <button style={buttonStyle} onClick={() => buttonClick()}>
+            No! Give me something else ...
+          </button>
+        </Col>
+      </Row>
+
       <Form>
-        <Row>
+        <Row class="d-flex justify-content-center">
           <Col xs="auto">I want to</Col>
           <Col xs="auto">
             <Form.Select defaultValue="anything">
@@ -51,9 +60,6 @@ export default function ActivityForm(props) {
               <option>be busy</option>
             </Form.Select>
           </Col>
-          {/* <Col xs="auto">
-        with
-        </Col> */}
           <Col xs="auto">
             <Form.Select defaultValue="...">
               <option>by myself, with other people, I dont care!</option>
