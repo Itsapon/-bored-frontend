@@ -53,7 +53,7 @@ export default function Activitypage() {
   // console.log("activity is ", activity); //runs twice on first render of page. First empty, then updated.
   return (
     <Container id="ActivityPage" style={{ width: "90%" }}>
-      {/* <Weather /> */}
+      <Weather />
       <Row class="d-flex justify-content-center">
         <h1 style={questionStyle}>Wanna do this?</h1>
       </Row>
