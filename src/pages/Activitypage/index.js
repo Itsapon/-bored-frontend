@@ -10,11 +10,14 @@ import ActivityForm from "../../components/ActivityForm";
 import { fetchRandom } from "../../store/activities/actions";
 import { selectActivity } from "../../store/activities/selectors";
 import Weather from "../../components/Weather";
+import { fetchSpecific } from "../../store/activities/actions";
 
 export default function Activitypage() {
   const dispatch = useDispatch();
   const newActivity = useSelector(selectActivity);
   const [activity, setActivity] = useState({});
+  const [type, setType] = useState("social");
+  const [participants, setParticipants] = useState(-1);
 
   const questionStyle = {
     fontSize: "50px",
@@ -23,16 +26,17 @@ export default function Activitypage() {
   function buttonClick() {
     console.log("Hi, I'm clicked");
     console.log("activity page: fetching a new activity");
-    dispatch(fetchRandom()); //fetches a new activity
-    setActivity(newActivity); //checks selector for new activity, but is quicker than the fetch request of the dispatch action
-    //we need to find a way to make the setActivity wait for the store to be updated.
-    //An idea to work around the slowness: a countdown intermezzo in between the rendering?
+    dispatch(fetchRandom());
     console.log("this is the new activity: ", newActivity);
+  }
+
+  function testClick() {
+    dispatch(fetchSpecific(type, participants));
   }
 
   useEffect(() => {
     setActivity(newActivity);
-  }, []);
+  }, [newActivity]);
 
   console.log("activity is ", activity); //runs twice on first render of page. First empty, then updated.
   return (
@@ -44,6 +48,7 @@ export default function Activitypage() {
       <Row class="d-flex justify-content-center">
         <ActivityCard activity={activity} />
       </Row>
+      <button onClick={() => testClick()}>Test click</button>
       <ActivityForm buttonClick={buttonClick} />
       <p>
         <Link to={{ pathname: "/about" }}>About !Bored</Link>
