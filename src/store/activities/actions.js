@@ -28,13 +28,7 @@ export const fetchRandom = () => {
 //fetches one random activity either with one arguments or two. 
 
 export const fetchSpecific =(activityType, activityPeople)=>{
-  /*needs two arguments, one for type, one for ppl. Type is string, people is int. 
-  if statement to look for how many arguments there are. 
-  Two different requests: one with one spot in the req, and one with two spots. 
-  If there's only one argument, goes to first req. etc
-
-  
-  */
+  console.log("starting the specific fetch..")
  const type=activityType; 
  const people=activityPeople;
  if (type==="select"||people===-1){
@@ -45,7 +39,7 @@ export const fetchSpecific =(activityType, activityPeople)=>{
         const res = await axios.get(`${ApiUrl}?participants=${people}`)
         console.log("this is res for people: ", res.data)  
       }catch (e){
-        console.log(e)
+        console.log(e)// if there's nothing found API sends back a proper error message
       }
    }}
    if (people===-1){
