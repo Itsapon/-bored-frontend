@@ -2,16 +2,27 @@ import React from "react";
 import { Container } from "react-bootstrap";
 
 export default function ActivityCard(props) {
-  const { activity } = props;
-  console.log("this is activity in article card: ", activity);
+  const cardStyle = {
+    padding: "25px",
+    border: "solid 2px darkblue",
+    borderRadius: "40px",
+  };
+  const activityFull = props.activity; // here we can find every info on the one activity we display.
+
+  // console.log("what is activityFull ", activityFull);
+
   return (
-    <Container>
-      <p style={{ width: "300px", margin: "auto" }}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus,
-        nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem
-        felis nec erat
-      </p>
-    </Container>
+    <div>
+      {!activityFull ? (
+        <div>Loading an activity...</div>
+      ) : (
+        <div>
+          <Container style={cardStyle}>
+            <p>{activityFull.activity}</p>
+          </Container>
+        </div>
+      )}
+    </div>
   );
 }
 /*

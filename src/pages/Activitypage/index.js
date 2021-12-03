@@ -24,39 +24,52 @@ export default function Activitypage() {
     fontSize: "50px",
   };
 
-  function getNewRandomBackgroundColor() {
-    var myArray = ["#B8B8D1", "#5B5F97", "#FFC145", "#FF6B6C"]; // 'B8B8D1'
-    var rand = myArray[Math.floor(Math.random() * myArray.length)];
-    document.getElementById("App").style.backgroundColor = rand;
-  }
-
-  function buttonClick() {
+   function buttonClick() {
     console.log("Hi, I'm clicked");
     getNewRandomBackgroundColor();
+    console.log("activity page: fetching a new activity");
+    dispatch(fetchRandom()); //fetches a new activity
+    setActivity(newActivity); //checks selector for new activity, but is quicker than the fetch request of the dispatch action
+    //we need to find a way to make the setActivity wait for the store to be updated.
+    //An idea to work around the slowness: a countdown intermezzo in between the rendering?
+    console.log("this is the new activity: ", newActivity);
   }
+function getNewRandomBackgroundColor() {
+  var colorArray = [
+    { backgroundcolor: "#5B5F97", fontcolor: "#FFFFFB", logocolor: "#4C191B" }, // purple bg
+    { backgroundcolor: "#FFC145", fontcolor: "#373D20", logocolor: "#e5383b" }, // yellow bg
+    { backgroundcolor: "#FF6B6C", fontcolor: "#FFFFFB", logocolor: "#3E442B" }, // pinkish bg
+  ];
+  var colorSheme = colorArray[Math.floor(Math.random() * colorArray.length)];
+  document.getElementById("App").style.backgroundColor = colorSheme.backgroundcolor;
+  document.getElementById("App").style.color = colorSheme.fontcolor;
+  document.getElementById("Logo").style.color = colorSheme.logocolor;
+}
 
   useEffect(() => {
     getNewRandomBackgroundColor();
-    console.log("Hi there this is useEffect, imma dispatch fetchrandom");
-    dispatch(fetchRandom());
     setActivity(newActivity);
-  }, [activity]);
+  }, []);
 
-  console.log("activity is ", activity);
+  console.log("activity is ", activity); //runs twice on first render of page. First empty, then updated.
   return (
-    <div>
+
+    <Container id="ActivityPage" style={activitypageStyle}>
       <Weather />
-      <Container id="ActivityPage" style={activitypageStyle}>
-        <Row>
-          <h1 style={questionStyle}>Wanna do this?</h1>
-        </Row>
-        <Row>
-          <ActivityCard activity={activity} />
-        </Row>
-        <Row>
-          <ActivityForm buttonClick={buttonClick} />
-        </Row>
-      </Container>
-    </div>
+      <Row>
+        <h1 style={questionStyle}>Wanna do this?</h1>
+      </Row>
+      <Row>
+        <Col md={{ span: 6, offset: 3 }}>
+        <ActivityCard activity={activity}/>
+        </Col>
+      </Row>
+      <Row>
+      <Col md={{ span: 8, offset: 2 }}>
+      <ActivityForm buttonClick={buttonClick} />
+        </Col>
+        
+      </Row>
+    </Container>
   );
 }
