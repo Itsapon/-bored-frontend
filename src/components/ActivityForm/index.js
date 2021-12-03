@@ -5,7 +5,13 @@ import { Row, Col } from "react-bootstrap";
 
 //function
 export default function ActivityForm(props) {
-  const { buttonClick } = props;
+  const {
+    buttonClick,
+    onFormActivityChange,
+    onFormParticipantsChange,
+    type,
+    participants,
+  } = props;
 
   const buttonStyle = {
     width: "400px",
@@ -31,26 +37,35 @@ export default function ActivityForm(props) {
         <Row class="d-flex justify-content-center">
           <Col xs="auto">I want to</Col>
           <Col xs="auto">
-            <Form.Select defaultValue="anything">
-              <option>do anything</option>
-              <option>learn something</option>
-              <option>do fun things</option>
-              <option>learn something</option>
-              <option>do something social</option>
-              <option>make somethng</option>
-              <option>help peopel</option>
-              <option>get to the kitchen</option>
-              <option>relax</option>
-              <option>be musical</option>
-              <option>be busy</option>
+            <Form.Select
+              defaultValue="select"
+              value={type}
+              onChange={(event) => onFormActivityChange(event)}
+            >
+              <option value="select">do anything</option>
+              <option value="education">learn something</option>
+              <option value="recreational">do fun things</option>
+              <option value="social">do something social</option>
+              <option value="diy">make somethng</option>
+              <option value="charity">help people</option>
+              <option value="cooking">get to the kitchen</option>
+              <option value="relaxation">relax</option>
+              <option value="music">be musical</option>
+              <option value="busywork">be busy</option>
             </Form.Select>
           </Col>
           <Col xs="auto">
-            <Form.Select defaultValue="...">
-              <option>by myself, with other people, I dont care!</option>
-              <option>by myself please.</option>
-              <option>with somebody else.</option>
-              <option>with a lot of people!</option>
+            <Form.Select
+              defaultValue="-1"
+              value={participants}
+              onChange={onFormParticipantsChange}
+            >
+              <option value="-1">
+                by myself, with other people, I dont care!
+              </option>
+              <option value="1">by myself please.</option>
+              <option value="2">with somebody else.</option>
+              <option value=">2">with a lot of people!</option>
             </Form.Select>
           </Col>
         </Row>
