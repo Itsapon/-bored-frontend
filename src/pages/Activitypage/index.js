@@ -12,17 +12,27 @@ import { selectActivity } from "../../store/activities/selectors";
 export default function Activitypage() {
   const dispatch = useDispatch();
   const newActivity = useSelector(selectActivity);
-  const [activity, setActivity] = useState({});  
+  const [activity, setActivity] = useState({});
   const activitypageStyle = {
-  width: "90%",
-  fontFamily: "Grandstander",
-  fontSize: "25px",
-};
+    width: "90%",
+    fontFamily: "Grandstander",
+    fontSize: "25px",
+  };
 
-const questionStyle = {
-  fontSize: "50px",
-};
+  const questionStyle = {
+    fontSize: "50px",
+  };
 
+   function buttonClick() {
+    console.log("Hi, I'm clicked");
+    getNewRandomBackgroundColor();
+    console.log("activity page: fetching a new activity");
+    dispatch(fetchRandom()); //fetches a new activity
+    setActivity(newActivity); //checks selector for new activity, but is quicker than the fetch request of the dispatch action
+    //we need to find a way to make the setActivity wait for the store to be updated.
+    //An idea to work around the slowness: a countdown intermezzo in between the rendering?
+    console.log("this is the new activity: ", newActivity);
+  }
 function getNewRandomBackgroundColor() {
   var colorArray = [
     { backgroundcolor: "#5B5F97", fontcolor: "#FFFFFB", logocolor: "#4C191B" }, // purple bg
@@ -35,19 +45,12 @@ function getNewRandomBackgroundColor() {
   document.getElementById("Logo").style.color = colorSheme.logocolor;
 }
 
-function buttonClick() {
-  console.log("Hi, I'm clicked");
-  getNewRandomBackgroundColor();
-}
-  
   useEffect(() => {
     getNewRandomBackgroundColor();
-    console.log("Hi there this is useEffect, imma dispatch fetchrandom");
-    dispatch(fetchRandom());
     setActivity(newActivity);
-  }, [activity]);
+  }, []);
 
-  console.log("activity is ", activity);
+  console.log("activity is ", activity); //runs twice on first render of page. First empty, then updated.
   return (
     <Container id="ActivityPage" style={activitypageStyle}>
       <Row>
