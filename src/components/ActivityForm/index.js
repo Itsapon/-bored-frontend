@@ -4,8 +4,12 @@ import { Container } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { Row, Col } from "react-bootstrap";
 import "./index.css";
-
+import { useDispatch } from "react-redux";
+//import actions etc
+import { fetchSpecific } from "../../store/activities/actions";
+//function
 export default function ActivityForm(props) {
+  const dispatch=useDispatch();
   const { buttonClick } = props;
 
   const buttonStyle = {
@@ -17,12 +21,19 @@ export default function ActivityForm(props) {
     borderRadius: "15px",
     margin: "20px",
   };
+  function testClick(){
+    const type="select";
+    const participants=-1;
+    dispatch(fetchSpecific(type,participants));
+  }
 
   return (
     <Container id="ActivityForm">
       {/* <div class="button">
         <a onClick={() => buttonClick()}>No! Give me something else ...</a>
       </div> */}
+      <button onClick={()=>testClick()}>Test click</button>
+
       <Row class="d-flex justify-content-center">
         <Col>
           <button style={buttonStyle} onClick={() => buttonClick()}>
@@ -30,6 +41,7 @@ export default function ActivityForm(props) {
           </button>
         </Col>
       </Row>
+
       <Form>
         <Row class="d-flex justify-content-center">
           <Col xs="auto">I want to</Col>
