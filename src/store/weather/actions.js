@@ -2,12 +2,10 @@ import axios from "axios";
 
 const ApiUrl = "https://visual-crossing-weather.p.rapidapi.com/forecast";
 
-const forecast = (data) => {
-  return {
-    type: "WEATHER/fetchdata",
-    payload: data,
-  };
-};
+export const forecast = (data) => ({
+  type: "WEATHER/fetchdata",
+  payload: data,
+});
 
 export const fetchWeatherForecast = (city) => {
   return async (dispatch, getState) => {
@@ -16,8 +14,8 @@ export const fetchWeatherForecast = (city) => {
         method: "GET",
         url: "https://visual-crossing-weather.p.rapidapi.com/forecast",
         params: {
-          aggregateHours: "24",
-          location: "Washington,DC,USA",
+          aggregateHours: "1",
+          location: city,
           contentType: "json",
           unitGroup: "us",
           shortColumnNames: "0",
@@ -29,8 +27,9 @@ export const fetchWeatherForecast = (city) => {
         },
       };
       const response = await axios.request(options);
-      console.log("weather response is: ", response);
-      dispatch(forecast(response.data));
+
+      // console.log("weather response is: ", response.data.location);
+      dispatch(forecast(response.data.locations));
     } catch (e) {
       console.log("error", e);
     }
