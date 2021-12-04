@@ -53,7 +53,7 @@ export default function Homepage() {
 
   useEffect(() => {
     getNewRandomBackgroundColor();
-    console.log("Homepage fetching first activity"); //runs first.
+    // console.log("Homepage fetching first activity"); //runs first.
     dispatch(fetchRandom());
   }, []);
 

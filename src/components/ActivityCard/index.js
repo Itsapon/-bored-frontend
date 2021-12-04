@@ -7,28 +7,29 @@ export default function ActivityCard(props) {
     border: "solid 2px darkblue",
     borderRadius: "40px",
   };
-  const activityFull = props.activity; // here we can find every info on the one activity we display.
+  const activity = props.activity; // here we can find every info on the one activity we display.
 
-  // console.log("what is activityFull ", activityFull);
+  // console.log("what is activity ", activity);
 
   const imgUrl =
-    "https://michielbrongers.nl/someimages/" + activityFull.type + ".png";
+    "https://michielbrongers.nl/someimages/" + activity.type + ".png";
 
   return (
     <div>
-      {!activityFull ? (
-        <div>Loading an activity...</div>
+      {!activity ? (
+        <div>Loading...</div>
       ) : (
         <Col md={{ span: 8, offset: 2 }}>
           <Container style={cardStyle}>
             <Row class="d-flex justify-content-center">
               <Col xs={12}>
-                <p>{activityFull.activity}</p>
+                <p>{activity.activity}</p>
+                <p>{activity.error}</p>
               </Col>
             </Row>
             <Row class="d-flex justify-content-center">
               <Col md={{ span: 6, offset: 3 }}>
-                <Image src={imgUrl} alt={activityFull.type} fluid></Image>
+                <Image src={imgUrl} alt={activity.type} fluid></Image>
               </Col>
             </Row>
           </Container>
