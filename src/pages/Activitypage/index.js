@@ -15,7 +15,7 @@ import { fetchSpecific } from "../../store/activities/actions";
 export default function Activitypage() {
   const dispatch = useDispatch();
   const newActivity = useSelector(selectActivity);
-  const [activity, setActivity] = useState({});
+  const [activity, setActivity] = useState({ activity: "Loading..." });
   const [type, setType] = useState("select");
   const [participants, setParticipants] = useState(-1);
 
@@ -24,25 +24,19 @@ export default function Activitypage() {
   };
 
   function buttonClick() {
-    console.log("Hi, I'm clicked");
-    console.log("activity page: fetching a new activity");
     dispatch(fetchRandom());
-    console.log("this is the new activity: ", newActivity);
-  }
-
-  function testClick() {
-    dispatch(fetchSpecific(type, participants));
+    // console.log("this is the new activity: ", newActivity);
   }
 
   const onFormActivityChange = (event) => {
     setType(event.target.value);
-    console.log("Form activity type changed", event.target.value, participants);
+    // console.log("Form activity type changed", event.target.value, participants);
     dispatch(fetchSpecific(event.target.value, participants));
   };
 
   const onFormParticipantsChange = (event) => {
     setParticipants(event.target.value);
-    console.log("Form participants changed", type, event.target.value);
+    // console.log("Form participants changed", type, event.target.value);
     dispatch(fetchSpecific(type, event.target.value));
   };
 
@@ -50,7 +44,6 @@ export default function Activitypage() {
     setActivity(newActivity);
   }, [newActivity]);
 
-  // console.log("activity is ", activity); //runs twice on first render of page. First empty, then updated.
   return (
     <Container id="ActivityPage" style={{ width: "90%" }}>
       <Weather />
@@ -60,7 +53,6 @@ export default function Activitypage() {
       <Row class="d-flex justify-content-center">
         <ActivityCard activity={activity} />
       </Row>
-      <button onClick={() => testClick()}>Test click</button>
       <ActivityForm
         buttonClick={buttonClick}
         onFormActivityChange={onFormActivityChange}

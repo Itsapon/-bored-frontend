@@ -37,7 +37,7 @@ export const fetchSpecific = (activityType, activityPeople) => {
         // console.log("this is specific thunk with one arg");
         try {
           const res = await axios.get(`${ApiUrl}?participants=${people}`);
-          console.log("this is res for people: ", res.data);
+          // console.log("this is res for people: ", res.data);
           dispatch(loadStore(res.data));
         } catch (e) {
           console.log(e); // if there's nothing found API sends back a proper error message
