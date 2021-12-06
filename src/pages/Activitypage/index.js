@@ -5,7 +5,6 @@ import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ActivityCard from "../../components/ActivityCard";
 import ActivityForm from "../../components/ActivityForm";
-import { fetchRandom } from "../../store/activities/actions";
 import { selectActivity } from "../../store/activities/selectors";
 import { fetchSpecific } from "../../store/activities/actions";
 import { fetchCity } from "../../store/weather/actions";
