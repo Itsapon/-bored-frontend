@@ -56,16 +56,16 @@ export default function ActivityForm(props) {
           </Col>
           <Col xs="auto">
             <Form.Select
-              defaultValue="-1"
+              defaultValue="0"
               value={participants}
               onChange={onFormParticipantsChange}
             >
-              <option value="-1">
+              <option value="0">
                 by myself, with other people, I dont care!
               </option>
               <option value="1">by myself please.</option>
               <option value="2">with somebody else.</option>
-              <option value=">2">with a lot of people!</option>
+              <option value="3">with a lot of people!</option>
             </Form.Select>
           </Col>
         </Row>
