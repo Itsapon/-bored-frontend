@@ -29,20 +29,19 @@ export const fetchRandom = () => {
 //fetches one random activity either with one arguments or two.
 
 export const fetchSpecific = (activityType, activityPeople) => {
-  console.log(
-    "Fetching specific",
-    activityType,
-    typeof activityPeople,
-    activityPeople
-  );
+  // console.log(
+  //   "Fetching specific",
+  //   activityType,
+  //   typeof activityPeople,
+  //   activityPeople
+  // );
   const type = activityType;
   const people = parseInt(activityPeople); //is a string when it's >2
   if (type == "select" && people == 0) {
-    console.log("type and people are: ", type, people);
+    // console.log("type and people are: ", type, people);
     return async (dispatch, getState) => {
       try {
         const res = await axios.get(`${ApiUrl}`);
-        console.log("This is res: ", res);
         dispatch(loadStore(res.data));
       } catch (e) {
         console.log(e);
@@ -53,7 +52,7 @@ export const fetchSpecific = (activityType, activityPeople) => {
     if (type === "select") {
       if (people === 3) {
         const number = Math.floor(Math.random() * 3) + 3;
-        console.log("number is: ", number);
+        // console.log("number is: ", number);
         return async (dispatch, getState) => {
           try {
             const res = await axios.get(`${ApiUrl}?participants=${number}`);
