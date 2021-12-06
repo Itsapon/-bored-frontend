@@ -1,13 +1,12 @@
 //tool imports
 import Button from "@restart/ui/esm/Button";
-import React, { useDebugValue } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Container } from "react-bootstrap";
 //actions etc
 import { fetchRandom } from "../../store/activities/actions";
-import { fetchSpecific } from "../../store/activities/actions";
 
 //function
 export default function Homepage() {
