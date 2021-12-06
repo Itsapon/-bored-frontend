@@ -1,19 +1,18 @@
-//tool imports
 import Button from "@restart/ui/esm/Button";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Container } from "react-bootstrap";
-//actions etc
 import { fetchRandom } from "../../store/activities/actions";
+import { fetchCity } from "../../store/weather/actions";
 
-//function
 export default function Homepage() {
   const dispatch = useDispatch();
 
   const questionStyle = {
-    fontSize: "50px",
+    fontSize: "45px",
+    fontWeight: "bolder",
   };
 
   const buttonStyle = {
@@ -27,7 +26,7 @@ export default function Homepage() {
   };
 
   function getNewRandomBackgroundColor() {
-    var colorArray = [
+    const colorArray = [
       {
         backgroundcolor: "#5B5F97",
         fontcolor: "#FFFFFB",
@@ -44,22 +43,24 @@ export default function Homepage() {
         logocolor: "#3E442B",
       }, // pinkish bg
     ];
-    var colorSheme = colorArray[Math.floor(Math.random() * colorArray.length)];
+    const colorSheme =
+      colorArray[Math.floor(Math.random() * colorArray.length)];
     document.getElementById("App").style.backgroundColor =
       colorSheme.backgroundcolor;
     document.getElementById("App").style.color = colorSheme.fontcolor;
     document.getElementById("Logo").style.color = colorSheme.logocolor;
+    document.getElementById("Weather").style.color = colorSheme.fontcolor;
   }
 
   useEffect(() => {
     getNewRandomBackgroundColor();
-    // console.log("Homepage fetching first activity"); //runs first.
+    dispatch(fetchCity());
     dispatch(fetchRandom());
   }, [dispatch]);
 
   return (
     <Container style={{ width: "90%" }}>
-      <h1 style={questionStyle}>I'm bored</h1>
+      <h1 style={questionStyle}>I'm bored ...</h1>
       <Link
         to={{
           pathname: "/activity",
@@ -67,7 +68,7 @@ export default function Homepage() {
       >
         <Button style={buttonStyle}>Give me an activity!</Button>
       </Link>
-      <p>
+      <p style={{ marginTop: "20px" }}>
         <Link to={{ pathname: "/about" }}>About !Bored</Link>
       </p>
     </Container>

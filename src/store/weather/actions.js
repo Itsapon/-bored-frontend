@@ -12,7 +12,6 @@ export const fetchCity = () => {
     try {
       const response = await axios.get(`http://ip-api.com/json?fields=city`);
       const city = response.data.city;
-      console.log("City by ip", city);
       dispatch(fetchWeatherForecast(city));
     } catch (e) {
       console.log("error", e);

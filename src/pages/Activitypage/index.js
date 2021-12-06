@@ -1,15 +1,12 @@
-//tool imports
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-//components, actions etc
 import ActivityCard from "../../components/ActivityCard";
 import ActivityForm from "../../components/ActivityForm";
 import { fetchRandom } from "../../store/activities/actions";
 import { selectActivity } from "../../store/activities/selectors";
-import Weather from "../../components/Weather";
 import { fetchSpecific } from "../../store/activities/actions";
 import { fetchCity } from "../../store/weather/actions";
 
@@ -21,36 +18,31 @@ export default function Activitypage() {
   const [participants, setParticipants] = useState(-1);
 
   const questionStyle = {
-    fontSize: "50px",
+    fontSize: "45px",
+    fontWeight: "bolder",
   };
 
   function buttonClick() {
     dispatch(fetchRandom());
-    // console.log("this is the new activity: ", newActivity);
   }
 
   const onFormActivityChange = (event) => {
     setType(event.target.value);
-    // console.log("Form activity type changed", event.target.value, participants);
     dispatch(fetchSpecific(event.target.value, participants));
   };
 
   const onFormParticipantsChange = (event) => {
     setParticipants(event.target.value);
-    // console.log("Form participants changed", type, event.target.value);
     dispatch(fetchSpecific(type, event.target.value));
   };
 
   useEffect(() => {
     setActivity(newActivity);
     dispatch(fetchCity());
-  }, [newActivity]);
+  }, [dispatch, newActivity]);
 
   return (
     <Container id="ActivityPage" style={{ width: "90%" }}>
-      <Row>
-        <Weather />
-      </Row>
       <Row className="d-flex justify-content-center">
         <h1 style={questionStyle}>Wanna do this?</h1>
       </Row>
@@ -64,10 +56,9 @@ export default function Activitypage() {
         type={type}
         participants={participants}
       />
-      <p>
+      <p style={{ marginTop: "20px" }}>
         <Link to={{ pathname: "/about" }}>About !Bored</Link>
       </p>
-      <button onClick={() => dispatch(fetchCity())}>Test</button>
     </Container>
   );
 }

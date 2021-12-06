@@ -6,10 +6,10 @@ export default function ActivityCard(props) {
     padding: "25px",
     border: "solid 2px darkblue",
     borderRadius: "40px",
+    fontSize: "27px",
+    fontWeight: "bolder",
   };
-  const activity = props.activity; // here we can find every info on the one activity we display.
-
-  // console.log("what is activity ", activity);
+  const activity = props.activity;
 
   const imgUrl =
     "https://michielbrongers.nl/someimages/" + activity.type + ".png";
@@ -29,7 +29,12 @@ export default function ActivityCard(props) {
             </Row>
             <Row className="d-flex justify-content-center">
               <Col xs={8}>
-                <Image src={imgUrl} alt={activity.type} fluid></Image>
+                <Image
+                  src={imgUrl}
+                  alt={activity.type}
+                  fluid
+                  style={{ maxHeight: "300px" }}
+                ></Image>
               </Col>
             </Row>
           </Container>
@@ -38,6 +43,3 @@ export default function ActivityCard(props) {
     </div>
   );
 }
-/*
-filter all people > 6 && type == relax
-*/

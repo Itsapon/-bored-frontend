@@ -3,7 +3,6 @@ import { Container } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { Row, Col } from "react-bootstrap";
 
-//function
 export default function ActivityForm(props) {
   const {
     buttonClick,
@@ -20,7 +19,7 @@ export default function ActivityForm(props) {
     fontSize: "25px",
     boxShadow: " 4px 3px darkblue , 3px 3px",
     borderRadius: "15px",
-    margin: "20px",
+    margin: "30px",
   };
 
   return (
@@ -33,11 +32,16 @@ export default function ActivityForm(props) {
         </Col>
       </Row>
 
-      <Form as={Row} className="d-flex justify-content-center">
-        <Col xs="auto">I want to</Col>
+      <Form
+        as={Row}
+        className="d-flex justify-content-center"
+        style={{ marginTop: "4px", alignItems: "baseline" }}
+      >
+        <Col xs="auto" style={{ fontSize: "20px" }}>
+          I want to
+        </Col>
         <Col xs="auto">
           <Form.Select
-            // defaultValue="select"
             value={type}
             onChange={(event) => onFormActivityChange(event)}
           >
@@ -54,11 +58,7 @@ export default function ActivityForm(props) {
           </Form.Select>
         </Col>
         <Col xs="auto">
-          <Form.Select
-            // defaultValue="-1"
-            value={participants}
-            onChange={onFormParticipantsChange}
-          >
+          <Form.Select value={participants} onChange={onFormParticipantsChange}>
             <option value="-1">
               by myself, with other people, I dont care!
             </option>
