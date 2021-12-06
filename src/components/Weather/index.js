@@ -1,19 +1,12 @@
-import Button from "@restart/ui/esm/Button";
-import React, { useState } from "react";
-import { FormControl, InputGroup } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchWeatherForecast } from "../../store/weather/actions";
+import React from "react";
+import { Container, Navbar } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { selectForecast } from "../../store/weather/selectors";
 
 export default function Weather() {
-  const dispatch = useDispatch();
   const weatherForecast = useSelector(selectForecast);
 
-  // console.log("weatherForecast in component is:", weatherForecast);
-
-  const [city, setCity] = useState("");
-
-  const specificConditions = weatherForecast ? weatherForecast[city] : null;
+  const specificConditions = weatherForecast ? weatherForecast : null;
 
   const temp = Math.round(
     (specificConditions && specificConditions.currentConditions.temp - 32) *
@@ -49,45 +42,34 @@ export default function Weather() {
       ? "https://res.cloudinary.com/dkdzt4lca/image/upload/v1638540089/Carso/snow_wcv4fz.png"
       : null;
 
-  function submitForm(event) {
-    event.preventDefault();
-    // console.log("type city", typeof city);
-
-    dispatch(fetchWeatherForecast(city));
-  }
-
   return (
-    <div>
-      <InputGroup className="mb-3">
-        <FormControl
-          value={city}
-          type="text"
-          placeholder="Enter your city"
-          aria-describedby="basic-addon2"
-          onChange={(event) => setCity(event.target.value)}
-        />
-        <Button
-          variant="outline-secondary"
-          id="button-addon2"
-          type="submit"
-          onClick={submitForm}
-        >
-          Check the weather
-        </Button>
-      </InputGroup>
-      {specificConditions === null ? null : (
-        <div>
-          <p>{specificConditions.address}</p>
-          <p>
-            Weather is:
-            {weatherState}
-            <span>
-              <img src={statusImage} alt="" />
-            </span>
-          </p>
-          <p>Temp is: {temp} C</p>
-        </div>
-      )}
-    </div>
+    <>
+      <Container id="Weather">
+        {specificConditions === null ? (
+          <></>
+        ) : (
+          <Navbar.Brand
+            
+            className="justify-content-end"
+            style={{
+              alignItems: "right",
+              fontWeight: "bolder",
+              fontSize: "14px",
+            }}
+          >
+            {specificConditions.id}
+            <br />
+            <img
+              alt=""
+              src={statusImage}
+              width="50"
+              height="50"
+              // className="d-inline-block align-top"
+            />{" "}
+            {temp}&deg;c
+          </Navbar.Brand>
+        )}
+      </Container>
+    </>
   );
 }
