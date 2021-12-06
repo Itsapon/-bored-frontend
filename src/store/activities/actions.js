@@ -1,6 +1,4 @@
-//imports
 import axios from "axios";
-import { createRoutesFromChildren } from "react-router";
 
 const ApiUrl = "http://www.boredapi.com/api/activity";
 //action creators
@@ -39,7 +37,7 @@ export const fetchSpecific = (activityType, activityPeople) => {
 
   const type = activityType;
   const people = parseInt(activityPeople); //is a string when it's >2
-  if (type == "select" && people == 0) {
+  if (type === "select" && people === 0) {
     // console.log("type and people are: ", type, people);
     return async (dispatch, getState) => {
       try {
