@@ -7,6 +7,19 @@ export const forecast = (data) => ({
   payload: data,
 });
 
+export const fetchCity = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`http://ip-api.com/json?fields=city`);
+      const city = response.data.city;
+      console.log("City by ip", city);
+      dispatch(fetchWeatherForecast(city));
+    } catch (e) {
+      console.log("error", e);
+    }
+  };
+};
+
 export const fetchWeatherForecast = (city) => {
   return async (dispatch, getState) => {
     try {
@@ -28,8 +41,8 @@ export const fetchWeatherForecast = (city) => {
       };
       const response = await axios.request(options);
 
-      // console.log("weather response is: ", response.data.location);
-      dispatch(forecast(response.data.locations));
+      console.log("weather response is: ", response.data.locations[city]);
+      dispatch(forecast(response.data.locations[city]));
     } catch (e) {
       console.log("error", e);
     }

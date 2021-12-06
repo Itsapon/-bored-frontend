@@ -11,6 +11,7 @@ import { fetchRandom } from "../../store/activities/actions";
 import { selectActivity } from "../../store/activities/selectors";
 import Weather from "../../components/Weather";
 import { fetchSpecific } from "../../store/activities/actions";
+import { fetchCity } from "../../store/weather/actions";
 
 export default function Activitypage() {
   const dispatch = useDispatch();
@@ -42,11 +43,14 @@ export default function Activitypage() {
 
   useEffect(() => {
     setActivity(newActivity);
+    dispatch(fetchCity());
   }, [newActivity]);
 
   return (
     <Container id="ActivityPage" style={{ width: "90%" }}>
-      <Weather />
+      <Row>
+        <Weather />
+      </Row>
       <Row className="d-flex justify-content-center">
         <h1 style={questionStyle}>Wanna do this?</h1>
       </Row>
@@ -63,6 +67,7 @@ export default function Activitypage() {
       <p>
         <Link to={{ pathname: "/about" }}>About !Bored</Link>
       </p>
+      <button onClick={() => dispatch(fetchCity())}>Test</button>
     </Container>
   );
 }

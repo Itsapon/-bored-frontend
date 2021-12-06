@@ -28,7 +28,7 @@ export default function ActivityCard(props) {
               </Col>
             </Row>
             <Row className="d-flex justify-content-center">
-              <Col md={{ span: 6, offset: 3 }}>
+              <Col xs={8}>
                 <Image src={imgUrl} alt={activity.type} fluid></Image>
               </Col>
             </Row>

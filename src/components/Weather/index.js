@@ -1,6 +1,14 @@
 import Button from "@restart/ui/esm/Button";
 import React, { useState } from "react";
-import { FormControl, InputGroup } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  FormControl,
+  InputGroup,
+  Image,
+  Card,
+} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWeatherForecast } from "../../store/weather/actions";
 import { selectForecast } from "../../store/weather/selectors";
@@ -13,7 +21,7 @@ export default function Weather() {
 
   const [city, setCity] = useState("");
 
-  const specificConditions = weatherForecast ? weatherForecast[city] : null;
+  const specificConditions = weatherForecast ? weatherForecast : null;
 
   const temp = Math.round(
     (specificConditions && specificConditions.currentConditions.temp - 32) *
@@ -56,9 +64,20 @@ export default function Weather() {
     dispatch(fetchWeatherForecast(city));
   }
 
+  const buttonStyle = {
+    width: "400px",
+    height: "60px",
+    fontWeight: "bolder",
+    fontSize: "25px",
+    boxShadow: " 4px 3px darkblue , 3px 3px",
+    borderRadius: "15px",
+    margin: "20px",
+  };
+
   return (
-    <div>
-      <InputGroup className="mb-3">
+    <>
+      <Container>
+        {/* <InputGroup className="mb-3">
         <FormControl
           value={city}
           type="text"
@@ -72,22 +91,54 @@ export default function Weather() {
           type="submit"
           onClick={submitForm}
         >
-          Check the weather
+          Check weather
         </Button>
-      </InputGroup>
-      {specificConditions === null ? null : (
-        <div>
-          <p>{specificConditions.address}</p>
-          <p>
-            Weather is:
-            {weatherState}
-            <span>
-              <img src={statusImage} alt="" />
-            </span>
-          </p>
-          <p>Temp is: {temp} C</p>
-        </div>
-      )}
-    </div>
+      </InputGroup> */}
+
+        {specificConditions === null ? (
+          <></>
+        ) : (
+          // <div
+          //   style={{
+          //     display: "flex",
+          //     justifyContent: "center",
+          //     alignItems: "center",
+          //   }}
+          // >
+          //   {/* <p>{specificConditions.address}</p> */}
+          //   {/* <p> */}
+          //   {/* Weather is:
+          //     {weatherState} */}
+          //   {/* <span> */}
+          //   <Image
+          //     src={statusImage}
+          //     alt="Weather status"
+          //     style={{ maxWidth: "100%", backgroundSize: "cover" }}
+          //     responsive
+          //   />
+          //   {/* </span> */}
+          //   {/* </p> */}
+          //   <p >Temp is: {temp} C</p>
+          // </div>
+          <Card style={{ width: "120px" }}>
+            <Card.Img variant="top" src={statusImage} />
+            <Card.ImgOverlay>
+              {/* <Card.Title>{temp}&deg;c</Card.Title> */}
+              <Card.Text>
+                <label style={{ marginTop: "12px" }}>
+                  {specificConditions.id}
+                  <br />
+                  {temp}&deg;c
+                </label>
+              </Card.Text>
+            </Card.ImgOverlay>
+            {/* <Card.Body>
+            <Card.Title>{temp}&deg;c</Card.Title>
+            <Card.Text></Card.Text>
+          </Card.Body> */}
+          </Card>
+        )}
+      </Container>
+    </>
   );
 }
