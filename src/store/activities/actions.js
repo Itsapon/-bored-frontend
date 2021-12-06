@@ -1,5 +1,6 @@
 //imports
 import axios from "axios";
+import { createRoutesFromChildren } from "react-router";
 
 const ApiUrl = "http://www.boredapi.com/api/activity";
 //action creators
@@ -28,11 +29,41 @@ export const fetchRandom = () => {
 //fetches one random activity either with one arguments or two.
 
 export const fetchSpecific = (activityType, activityPeople) => {
-  // console.log("Fetching specific", activityType, activityPeople);
+
+  // console.log(
+  //   "Fetching specific",
+  //   activityType,
+  //   typeof activityPeople,
+  //   activityPeople
+  // );
+
   const type = activityType;
-  const people = activityPeople;
-  if (type === "select" || people === -1) {
+  const people = parseInt(activityPeople); //is a string when it's >2
+  if (type == "select" && people == 0) {
+    // console.log("type and people are: ", type, people);
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.get(`${ApiUrl}`);
+        dispatch(loadStore(res.data));
+      } catch (e) {
+        console.log(e);
+      }
+    };
+  }
+  if (type === "select" || people === 0) {
     if (type === "select") {
+      if (people === 3) {
+        const number = Math.floor(Math.random() * 3) + 3;
+        // console.log("number is: ", number);
+        return async (dispatch, getState) => {
+          try {
+            const res = await axios.get(`${ApiUrl}?participants=${number}`);
+            dispatch(loadStore(res.data));
+          } catch (e) {
+            console.log(e);
+          }
+        };
+      }
       return async (dispatch, getState) => {
         // console.log("this is specific thunk with one arg");
         try {
@@ -44,7 +75,7 @@ export const fetchSpecific = (activityType, activityPeople) => {
         }
       };
     }
-    if (people === -1) {
+    if (people === 0) {
       return async (dispatch, getState) => {
         // console.log("this is specific thunk with one arg");
         try {
@@ -60,7 +91,7 @@ export const fetchSpecific = (activityType, activityPeople) => {
       return;
     }
   }
-  if (type !== "select" && people !== -1) {
+  if (type !== "select" && people !== 0) {
     return async (dispatch, getState) => {
       // console.log("this is specific thunk with two args");
       try {

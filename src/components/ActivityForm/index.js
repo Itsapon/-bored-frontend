@@ -67,6 +67,7 @@ export default function ActivityForm(props) {
             <option value=">2">with a lot of people!</option>
           </Form.Select>
         </Col>
+
       </Form>
     </Container>
   );

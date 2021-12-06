@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { Container } from "react-bootstrap";
 import { fetchRandom } from "../../store/activities/actions";
 import { fetchCity } from "../../store/weather/actions";
+import { fetchSpecific } from "../../store/activities/actions";
 
 export default function Homepage() {
   const dispatch = useDispatch();
