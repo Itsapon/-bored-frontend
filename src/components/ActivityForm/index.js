@@ -25,7 +25,7 @@ export default function ActivityForm(props) {
 
   return (
     <Container id="ActivityForm">
-      <Row class="d-flex justify-content-center">
+      <Row className="d-flex justify-content-center">
         <Col>
           <button style={buttonStyle} onClick={() => buttonClick()}>
             No! Give me something else ...
@@ -34,11 +34,11 @@ export default function ActivityForm(props) {
       </Row>
 
       <Form>
-        <Row class="d-flex justify-content-center">
+        <Row className="d-flex justify-content-center">
           <Col xs="auto">I want to</Col>
           <Col xs="auto">
             <Form.Select
-              defaultValue="select"
+              // defaultValue="select"
               value={type}
               onChange={(event) => onFormActivityChange(event)}
             >
@@ -56,7 +56,7 @@ export default function ActivityForm(props) {
           </Col>
           <Col xs="auto">
             <Form.Select
-              defaultValue="-1"
+              // defaultValue="-1"
               value={participants}
               onChange={onFormParticipantsChange}
             >

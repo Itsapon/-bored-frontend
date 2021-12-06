@@ -12,7 +12,7 @@ export const fetchWeatherForecast = (city) => {
     try {
       const options = {
         method: "GET",
-        url: "https://visual-crossing-weather.p.rapidapi.com/forecast",
+        url: ApiUrl,
         params: {
           aggregateHours: "1",
           location: city,
