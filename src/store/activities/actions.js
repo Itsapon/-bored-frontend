@@ -29,12 +29,14 @@ export const fetchRandom = () => {
 //fetches one random activity either with one arguments or two.
 
 export const fetchSpecific = (activityType, activityPeople) => {
+
   // console.log(
   //   "Fetching specific",
   //   activityType,
   //   typeof activityPeople,
   //   activityPeople
   // );
+
   const type = activityType;
   const people = parseInt(activityPeople); //is a string when it's >2
   if (type == "select" && people == 0) {

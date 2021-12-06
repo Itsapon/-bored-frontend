@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  BrowserRouter,
 } from "react-router-dom";
 
 import "./App.css";
@@ -12,19 +11,19 @@ import Navigation from "./components/Navigation";
 import Homepage from "./pages/Homepage/Homepage";
 import Activitypage from "./pages/Activitypage";
 import AboutPage from "./pages/AboutPage";
-import Weather from "./components/Weather";
+// import Weather from "./components/Weather";
 
 function App() {
   return (
     <div className="App" id="App" style={{ minHeight: "100vh" }}>
-      <BrowserRouter>
+      <Router>
         <Navigation />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/activity" element={<Activitypage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }

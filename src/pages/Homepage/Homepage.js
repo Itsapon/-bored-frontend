@@ -1,6 +1,6 @@
 //tool imports
 import Button from "@restart/ui/esm/Button";
-import React, { useDebugValue } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -56,7 +56,7 @@ export default function Homepage() {
     getNewRandomBackgroundColor();
     // console.log("Homepage fetching first activity"); //runs first.
     dispatch(fetchRandom());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container style={{ width: "90%" }}>
