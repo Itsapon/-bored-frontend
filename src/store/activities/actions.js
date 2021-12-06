@@ -1,5 +1,6 @@
 //imports
 import axios from "axios";
+import { createRoutesFromChildren } from "react-router";
 
 const ApiUrl = "http://www.boredapi.com/api/activity";
 //action creators
@@ -31,8 +32,31 @@ export const fetchSpecific = (activityType, activityPeople) => {
   console.log("Fetching specific", activityType, activityPeople);
   const type = activityType;
   const people = activityPeople;
+  if (type == "select" && people == -1) {
+    console.log("type and people are: ", type, people);
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.get(`${ApiUrl}`);
+        console.log("This is res: ", res);
+        dispatch(loadStore(res.data));
+      } catch (e) {
+        console.log(e);
+      }
+    };
+  }
   if (type === "select" || people === -1) {
     if (type === "select") {
+      if (people > 2) {
+        const number = Math.random() * 5;
+        console.log("number is: ", number);
+        return async (dispatch, getState) => {
+          try {
+            const res = await axios.get(`${ApiUrl}?participants=${number}`);
+          } catch (e) {
+            console.log(e);
+          }
+        };
+      }
       return async (dispatch, getState) => {
         // console.log("this is specific thunk with one arg");
         try {

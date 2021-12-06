@@ -24,7 +24,7 @@ export default function Activitypage() {
   };
 
   function buttonClick() {
-    dispatch(fetchRandom());
+    dispatch(fetchSpecific(type, participants));
     // console.log("this is the new activity: ", newActivity);
   }
 
