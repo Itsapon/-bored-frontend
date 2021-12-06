@@ -17,14 +17,14 @@ export default function Activitypage() {
   const newActivity = useSelector(selectActivity);
   const [activity, setActivity] = useState({ activity: "Loading..." });
   const [type, setType] = useState("select");
-  const [participants, setParticipants] = useState(-1);
+  const [participants, setParticipants] = useState("0");
 
   const questionStyle = {
     fontSize: "50px",
   };
 
   function buttonClick() {
-    dispatch(fetchRandom());
+    dispatch(fetchSpecific(type, participants));
     // console.log("this is the new activity: ", newActivity);
   }
 
