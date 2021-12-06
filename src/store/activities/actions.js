@@ -28,7 +28,7 @@ export const fetchRandom = () => {
 //fetches one random activity either with one arguments or two.
 
 export const fetchSpecific = (activityType, activityPeople) => {
-  console.log("Fetching specific", activityType, activityPeople);
+  // console.log("Fetching specific", activityType, activityPeople);
   const type = activityType;
   const people = activityPeople;
   if (type === "select" || people === -1) {

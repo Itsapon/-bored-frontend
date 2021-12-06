@@ -21,13 +21,13 @@ export default function ActivityCard(props) {
       ) : (
         <Col md={{ span: 8, offset: 2 }}>
           <Container style={cardStyle}>
-            <Row class="d-flex justify-content-center">
+            <Row className="d-flex justify-content-center">
               <Col xs={12}>
                 <p>{activity.activity}</p>
                 <p>{activity.error}</p>
               </Col>
             </Row>
-            <Row class="d-flex justify-content-center">
+            <Row className="d-flex justify-content-center">
               <Col md={{ span: 6, offset: 3 }}>
                 <Image src={imgUrl} alt={activity.type} fluid></Image>
               </Col>

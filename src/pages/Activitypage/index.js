@@ -2,7 +2,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 //components, actions etc
 import ActivityCard from "../../components/ActivityCard";
@@ -47,10 +47,10 @@ export default function Activitypage() {
   return (
     <Container id="ActivityPage" style={{ width: "90%" }}>
       <Weather />
-      <Row class="d-flex justify-content-center">
+      <Row className="d-flex justify-content-center">
         <h1 style={questionStyle}>Wanna do this?</h1>
       </Row>
-      <Row class="d-flex justify-content-center">
+      <Row className="d-flex justify-content-center">
         <ActivityCard activity={activity} />
       </Row>
       <ActivityForm
