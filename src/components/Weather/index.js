@@ -54,7 +54,7 @@ export default function Weather() {
             style={{
               alignItems: "right",
               fontWeight: "bolder",
-              fontSize: "14px",
+              fontSize: "20px",
             }}
           >
             {specificConditions.id}
