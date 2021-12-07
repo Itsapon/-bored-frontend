@@ -35,7 +35,7 @@ export const fetchWeatherForecast = (city) => {
         headers: {
           "x-rapidapi-host": "visual-crossing-weather.p.rapidapi.com",
           "x-rapidapi-key":
-            "4df10cf0c9msh637416424d742ecp19936ajsnc27e706d5b6f",
+            "6dc5a0c91emsh37f70d69304f0e7p16f1acjsna2b912c0d1ed",
         },
       };
       const response = await axios.request(options);
