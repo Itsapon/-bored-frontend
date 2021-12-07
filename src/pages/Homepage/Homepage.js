@@ -16,8 +16,10 @@ export default function Homepage() {
   };
 
   const buttonStyle = {
-    width: "400px",
-    height: "60px",
+    paddingTop: "20px",
+    paddingBottom: "20px",
+    paddingLeft: "30px",
+    paddingRight: "30px",
     fontWeight: "bolder",
     fontSize: "25px",
     boxShadow: " 4px 3px darkblue , 3px 3px",
